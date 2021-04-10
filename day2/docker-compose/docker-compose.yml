@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  gunicorn:
+    image: gunicorn:1.0.0
+  nginx:
+    image: nginx:1.0.0
+    ports:
+      - "80:80"
+

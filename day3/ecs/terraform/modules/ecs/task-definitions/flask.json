@@ -1,0 +1,22 @@
+[
+  {
+    "name": "nginx",
+    "image": "jihyungsong/nginx:fargate",
+    "essential": true,
+    "portMappings": [
+      {
+        "containerPort": 80
+      }
+    ]
+  },
+  {
+    "name": "gunicorn",
+    "image": "jihyungsong/gunicorn:fargate",
+    "essential": true,
+    "portMappings": [
+      {
+        "containerPort": 5000
+      }
+    ]
+  }
+]

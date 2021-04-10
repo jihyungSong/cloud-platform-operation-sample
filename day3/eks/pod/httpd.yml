@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: bluese05-httpd
+  namespace: bluese05
+  labels:
+    web: httpd
+spec:
+  containers:
+    - name: bluese05-httpd
+      image: httpd
+      ports: 
+        - containerPort: 80
+          protocol: TCP

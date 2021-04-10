@@ -1,0 +1,3 @@
+kubectl cluster-info
+kubectl get node
+kubectl describe node

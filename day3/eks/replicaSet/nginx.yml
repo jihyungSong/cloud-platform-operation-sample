@@ -1,0 +1,25 @@
+apiVersion: apps/v1beta2
+kind: ReplicaSet
+metadata:
+  name: bluese05-nginx-replicaset
+  namespace: bluese05
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      web: nginx
+  template:
+    metadata:
+      name: bluese05-nginx
+      namespace: bluese05
+      labels:
+        web: nginx
+    spec:   
+      containers:
+      - name: bluese05-nginx
+        image: nginx
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8080
+
