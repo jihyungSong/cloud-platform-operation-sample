@@ -1,3 +1,3 @@
 locals {
-  project_name          =   "${var.project_name != "" ? var.project_name : "default"}"
+  project_name          =   var.project_name != "" ? var.project_name : "default"
 }
