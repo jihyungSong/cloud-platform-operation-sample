@@ -6,9 +6,11 @@ resource "aws_subnet" "vpc_public_subnet" {
     cidr_block          =   lookup(var.vpc_public_subnets[count.index], "cidr")
 
     tags                =   {
-        Name            =   "${var.vpc_name}-${lookup(var.vpc_public_subnets[count.index], "name")}"
-        Managed_by      =   "terraform"
-        Tier            =   "public"
+        Name                                                        =   "${var.vpc_name}-${lookup(var.vpc_public_subnets[count.index], "name")}"
+        Managed_by                                                  =   "terraform"
+        Tier                                                        =   "public"
+        "kubernetes.io/cluster/${var.project_name}-eks-cluster"     =   "shared"
+        "kubernetes.io/role/elb"                                    =   1
     }
 }
 
