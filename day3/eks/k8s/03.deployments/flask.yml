@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-deploy
+  namespace: jhsong-namespace
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: flask
+  template:
+    metadata:
+      name: jhsong-flask
+      labels:
+        app: flask
+    spec:
+      containers:
+      - name: gunicorn
+        image: jihyungsong/gunicorn:fargate
+        ports: 
+        - containerPort: 5000
+          protocol: TCP
+      - name: nginx
+        image: jihyungsong/nginx:fargate
+        ports:
+        - containerPort: 80 
+          protocol: TCP
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 10

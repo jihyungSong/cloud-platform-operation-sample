@@ -1,8 +1,8 @@
-apiVersion: apps/v1beta2
+apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
-  name: bluese05-nginx-replicaset
-  namespace: bluese05
+  name: jhsong-nginx-replicaset
+  namespace: jhsong-namespace
 spec:
   replicas: 3
   selector:
@@ -10,13 +10,12 @@ spec:
       web: nginx
   template:
     metadata:
-      name: bluese05-nginx
-      namespace: bluese05
+      name: jhsong-nginx
       labels:
         web: nginx
     spec:   
       containers:
-      - name: bluese05-nginx
+      - name: jhsong-nginx
         image: nginx
         livenessProbe:
           httpGet:

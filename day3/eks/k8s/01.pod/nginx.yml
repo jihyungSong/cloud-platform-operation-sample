@@ -1,14 +1,14 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: bluese05-httpd
-  namespace: bluese05
+  name: jhsong-nginx
+  namespace: jhsong-namespace
   labels:
-    web: httpd
+    web: nginx
 spec:
   containers:
-    - name: bluese05-httpd
-      image: httpd
+    - name: jhsong-nginx
+      image: nginx
       ports: 
         - containerPort: 80
           protocol: TCP

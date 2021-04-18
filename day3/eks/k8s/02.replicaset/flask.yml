@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: jhsong-flask-replicaset
+  namespace: jhsong-namespace
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      web: flask
+  template:
+    metadata:
+      name: jhsong-flask
+      labels:
+        web: flask
+    spec:
+      containers:
+      - name: gunicorn
+        image: jihyungsong/gunicorn:fargate
+        ports: 
+        - containerPort: 5000
+          protocol: TCP
+      - name: nginx
+        image: jihyungsong/nginx:fargate
+        ports:
+        - containerPort: 80 
+          protocol: TCP
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 10
