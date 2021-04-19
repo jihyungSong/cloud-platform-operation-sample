@@ -4,7 +4,7 @@ metadata:
   name: jhsong-flask
   namespace: jhsong-namespace
   labels:
-    web: flask
+    app: flask
 spec:
   containers:
     - name: gunicorn

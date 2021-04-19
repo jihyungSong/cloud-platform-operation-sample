@@ -7,12 +7,12 @@ spec:
   replicas: 3
   selector:
     matchLabels:
-      web: flask
+      app: flask
   template:
     metadata:
       name: jhsong-flask
       labels:
-        web: flask
+        app: flask
     spec:
       containers:
       - name: gunicorn
